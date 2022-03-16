@@ -1,4 +1,3 @@
-from api.pagination import CustomPageNumberPagination
 from djoser.views import UserViewSet
 from rest_framework import status
 from rest_framework.generics import ListAPIView, get_object_or_404
@@ -7,17 +6,25 @@ from rest_framework.permissions import (IsAuthenticated,
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from api.pagination import CustomPageNumberPagination
+
 from .models import Follow, User
 from .serializers import CustomUserSerializer, FollowSerializer
 
 
 class CustomUserViewSet(UserViewSet):
+    """
+    ViewSet для работы с пользователями.
+    """
     queryset = User.objects.all()
     serializer_class = CustomUserSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class FollowViewSet(APIView):
+    """
+    APIView для добавления и удаления подписки на автора
+    """
     serializer_class = FollowSerializer
     permission_classes = [IsAuthenticated]
     pagination_class = CustomPageNumberPagination
@@ -64,6 +71,9 @@ class FollowViewSet(APIView):
 
 
 class FollowListView(ListAPIView):
+    """
+    APIView для просмотра подписок.
+    """
     serializer_class = FollowSerializer
     permission_classes = [IsAuthenticated]
     pagination_class = CustomPageNumberPagination

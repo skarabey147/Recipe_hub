@@ -1,11 +1,15 @@
 from djoser.serializers import UserCreateSerializer, UserSerializer
-from recipes.serializer import ShortRecipeSerializer
 from rest_framework import serializers
+
+from recipes.models import Recipe
 
 from .models import Follow, User
 
 
 class CustomUserCreateSerializer(UserCreateSerializer):
+    """
+    Сериализатор для регистрации пользователя.
+    """
     class Meta:
         model = User
         fields = (
@@ -31,6 +35,11 @@ class CustomUserCreateSerializer(UserCreateSerializer):
 
 
 class CustomUserSerializer(UserSerializer):
+    """
+    Сериализатор для пользователя.
+    get_is_subscribed показывает,
+    подписан ли текущий пользователь на просматриваемого.
+    """
     is_subscribed = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
@@ -50,7 +59,19 @@ class CustomUserSerializer(UserSerializer):
         return Follow.objects.filter(user=user, author=obj.id).exists()
 
 
+class ShortRecipeSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для краткого отображения сведений о рецепте
+    """
+    class Meta:
+        model = Recipe
+        fields = ('id', 'name', 'image', 'cooking_time')
+
+
 class FollowSerializer(CustomUserSerializer):
+    """
+    Сериализатор для вывода подписок пользователя
+    """
     recipes = serializers.SerializerMethodField(read_only=True)
     recipes_count = serializers.SerializerMethodField(read_only=True)
 

@@ -1,6 +1,7 @@
 from django_filters.rest_framework import FilterSet, filters
-from recipes.models import Recipe
 from rest_framework.filters import SearchFilter
+
+from recipes.models import Recipe
 
 
 class IngredientSearchFilter(SearchFilter):
@@ -8,6 +9,10 @@ class IngredientSearchFilter(SearchFilter):
 
 
 class RecipeFilter(FilterSet):
+    """
+    Фильтры для сортировки рецептов по:
+    тегам, нахождению в избранном и корзине.
+    """
     tags = filters.AllValuesMultipleFilter(field_name='tags__slug')
     is_favorited = filters.BooleanFilter(method='filter_is_favorited')
     is_in_shopping_cart = filters.BooleanFilter(

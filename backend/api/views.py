@@ -2,8 +2,7 @@ from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from recipes.models import (Favorite, Ingredient, IngredientAmount, Recipe,
-                            ShoppingCart, Tag)
+
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -14,6 +13,9 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 
+from recipes.models import (Favorite, Ingredient, IngredientAmount, Recipe,
+                            ShoppingCart, Tag)
+
 from .filters import IngredientSearchFilter, RecipeFilter
 from .pagination import CustomPageNumberPagination
 from .permissions import IsAuthorOrReadOnly
@@ -23,12 +25,20 @@ from .serializers import (FavoriteSerializer, IngredientSerializer,
 
 
 class TagsViewSet(ReadOnlyModelViewSet):
+    """
+    ViewSet для работы с тегами.
+    Добавить тег может администратор.
+    """
     queryset = Tag.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = TagSerializer
 
 
 class IngredientsViewSet(ReadOnlyModelViewSet):
+    """
+    ViewSet для работы с ингредиентами.
+    Добавить ингредиент может администратор.
+    """
     queryset = Ingredient.objects.all()
     permission_classes = (AllowAny, )
     serializer_class = IngredientSerializer
@@ -37,6 +47,10 @@ class IngredientsViewSet(ReadOnlyModelViewSet):
 
 
 class RecipeViewSet(ModelViewSet):
+    """
+    ViewSet для работы с рецептами.
+    Для анонимов разрешен только просмотр рецептов.
+    """
     queryset = Recipe.objects.all()
     permission_classes = [IsAuthorOrReadOnly]
     filter_backends = [DjangoFilterBackend]
