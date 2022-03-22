@@ -10,9 +10,10 @@ services:
       - ./.env
 
   backend:
-    build:
-      context: ../backend
-      dockerfile: Dockerfile
+#    build:
+#      context: ../backend
+#      dockerfile: Dockerfile
+    image: skarabey147/foodgram_backend:v1
     expose:
       - 8000
     restart: always
@@ -25,9 +26,10 @@ services:
       - ./.env
 
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+#    build:
+#      context: ../frontend
+#      dockerfile: Dockerfile
+    image: skarabey147/foodgram_frontend:v1
     volumes:
       - ../frontend/:/app/result_build/
 
