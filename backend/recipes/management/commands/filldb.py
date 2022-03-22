@@ -9,6 +9,7 @@ from recipes.models import Ingredient
 
 DATA_ROOT = os.path.join(settings.BASE_DIR, 'data')
 
+
 class Command(BaseCommand):
     """
     Добавляем ингредиенты из файла
@@ -29,11 +30,14 @@ class Command(BaseCommand):
                     objs = [
                         Ingredient(
                             name=ingredient["name"],
-                            measurement_unit=ingredient["measurement_unit"]).save()
-
+                            measurement_unit=ingredient[
+                                "measurement_unit"
+                            ]).save()
                         for ingredient in data
                     ]
-                    Ingredient.objects.bulk_update(objs, ['name', 'measurment_unit'])
+                    Ingredient.objects.bulk_update(
+                        objs, ['name', 'measurement_unit']
+                    )
                 except IntegrityError:
                     raise CommandError('Ингредиент уже существует')
 
