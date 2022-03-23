@@ -13,7 +13,7 @@ services:
 #    build:
 #      context: ../backend
 #      dockerfile: Dockerfile
-    image: skarabey147/foodgram_backend:v1
+    image: skarabey147/foodgram_backend:v1.2
     expose:
       - 8000
     restart: always

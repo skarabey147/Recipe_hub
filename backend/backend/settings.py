@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv(
     default='django-insecure-kialwu9o(&-+_7vo%f@wzda=(rj_^0w)v8bb!h!38d1l8**e^t'
 )
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -79,6 +79,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', default='5432')
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
