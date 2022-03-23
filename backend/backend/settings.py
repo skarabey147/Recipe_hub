@@ -15,7 +15,8 @@ SECRET_KEY = os.getenv(
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['project-foodgram.ddns.net', 'localhost', '84.201.140.198']
+ALLOWED_HOSTS = ['project-foodgram.ddns.net', 'backend',
+                 'localhost', '84.201.140.198']
 
 CSRF_TRUSTED_ORIGINS = [
     'project-foodgram.ddns.net',
