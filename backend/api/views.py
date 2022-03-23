@@ -129,10 +129,11 @@ class RecipeViewSet(ModelViewSet):
         canvas.save()
         return response
 
-    @action(detail=False, permission_classes=[IsAuthenticated])
+    @action(detail=False, methods=["POST"],
+            permission_classes=[IsAuthenticated])
     def download_shopping_cart(self, request):
         ingredients = IngredientAmount.objects.filter(
-            recipe__shopping_carts__user=request.user).values(
+            recipe__carts__user=request.user).values(
             'ingredient__name', 'ingredient__measurement_unit').order_by(
             'ingredient__name').annotate(ingredient_total=Sum('amount'))
         return RecipeViewSet.canvas_method(ingredients)

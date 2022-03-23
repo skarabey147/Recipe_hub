@@ -17,6 +17,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [' http://localhost']
 
 CSRF_COOKIE_SECURE = False
 
