@@ -24,6 +24,8 @@ CSRF_TRUSTED_ORIGINS = [
     'localhost'
 ]
 
+CSRF_COOKIE_SECURE = True
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
