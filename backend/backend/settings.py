@@ -17,9 +17,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [' http://localhost']
+CSRF_TRUSTED_ORIGINS = ['http://*localhost', 'https://*localhost']
 
-CSRF_COOKIE_SECURE = False
 
 INSTALLED_APPS = [
     'django.contrib.admin',
