@@ -2,7 +2,7 @@
 
 ![example workflow](https://github.com/NIK-TIGER-BILL/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)  
 
-### Стек технологий
+## Стек технологий
 
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/-Django-464646?style=flat-square&logo=Django)](https://www.djangoproject.com/)
@@ -15,19 +15,19 @@
 [![Yandex.Cloud](https://img.shields.io/badge/-Yandex.Cloud-464646?style=flat-square&logo=Yandex.Cloud)](https://cloud.yandex.ru/)
 
 
-### Описание проекта
+## Описание проекта
 
 Foodgram это ресурс для публикации рецептов.
 Пользователи могут создавать свои рецепты, читать рецепты других пользователей, подписываться на интересных авторов, добавлять лучшие рецепты в избранное, а также создавать список покупок и загружать его в pdf формате
 
 ### Установка проекта локально
-*Склонировать репозиторий на локальную машину:
+* Склонировать репозиторий на локальную машину:
 ```bash
 git clone https://github.com/skarabey147/foodgram-project-react.git
 cd foodgram-project-react
 ```
 
-*Cоздать и активировать виртуальное окружение:
+* Cоздать и активировать виртуальное окружение:
 
 ```bash
 python -m venv env
@@ -37,7 +37,7 @@ python -m venv env
 source env/bin/activate
 ```
 
-*Cоздайте файл `.env` в директории `/infra/` с содержанием:
+* Cоздайте файл `.env` в директории `/infra/` с содержанием:
 
 ```
 SECRET_KEY=секретный ключ django
@@ -49,26 +49,26 @@ DB_HOST=bd
 DB_PORT=5432
 ```
 
-*Перейти в директирию и установить зависимости из файла requirements.txt:
+* Перейти в директирию и установить зависимости из файла requirements.txt:
 
 ```bash
 cd backend/
 pip install -r requirements.txt
 ```
 
-*Выполните миграции:
+* Выполните миграции:
 
 ```bash
 python manage.py migrate
 ```
 
-*Запустите сервер:
+* Запустите сервер:
 ```bash
 python manage.py runserver
 ```
 
-### Запуск проекта в Docker контейнере
-*Установите Docker.
+## Запуск проекта в Docker контейнере
+* Установите Docker.
 
 Параметры запуска описаны в файлах `docker-compose.yml` и `nginx.conf` которые находятся в директории infra/.
 При необходимости добавьте/измените адреса проекта в файле `nginx.conf`
@@ -78,35 +78,35 @@ python manage.py runserver
  - контейнер приложения **backend**
  - контейнер web-сервера **nginx**
 
-*Запустите docker compose:
+* Запустите docker compose:
 ```bash
 docker-compose up -d --build
 ```
-*Примените миграции:
+* Примените миграции:
 ```bash
 docker-compose exec backend python manage.py migrate
 ```
-*Загрузите ингредиенты:
+* Загрузите ингредиенты:
 ```bash
 docker-compose exec backend python manage.py load_ingrs
 ```
-*Загрузите теги:
+* Загрузите теги:
 ```bash
 docker-compose exec backend python manage.py load_tags
 ```
-*Создайте администратора:
+* Создайте администратора:
 ```bash
 docker-compose exec backend python manage.py createsuperuser
 ```
-*Соберите статику:
+* Соберите статику:
 ```bash
 docker-compose exec backend python manage.py collectstatic --no-input
 ```
 
-### Сайт
+## Сайт
 Сайт доступен по ссылке:
 [http://project-foodgram.ddns.net/](http://project-foodgram.ddns.net/)
 
-### Документация к API
+## Документация к API
 API документация доступна по ссылке (создана с помощью redoc):
 [http://project-foodgram.ddns.net/api/docs/](http://project-foodgram.ddns.net/api/docs/)
