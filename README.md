@@ -17,7 +17,7 @@
 
 ## Описание проекта
 
-Foodgram это ресурс для публикации рецептов.
+Foodgram это ресурс для публикации рецептов.  
 Пользователи могут создавать свои рецепты, читать рецепты других пользователей, подписываться на интересных авторов, добавлять лучшие рецепты в избранное, а также создавать список покупок и загружать его в pdf формате
 
 ### Установка проекта локально
@@ -44,8 +44,8 @@ SECRET_KEY=секретный ключ django
 DB_ENGINE=django.db.backends.postgresql
 DB_NAME=postgres
 POSTGRES_USER=postgres
-POSTGRES_PASSWORD=пароль_к_базе_данных_на_ваш_выбор
-DB_HOST=bd
+POSTGRES_PASSWORD=postgres
+DB_HOST=db
 DB_PORT=5432
 ```
 
@@ -76,11 +76,11 @@ python manage.py runserver
 * Запустите docker compose:
 ```bash
 docker-compose up -d --build
-```
-> После сборки появляются 3 контейнера:
-> 1. контейнер базы данных **db**
-> 2. контейнер приложения **backend**
-> 3. контейнер web-сервера **nginx**
+```  
+  > После сборки появляются 3 контейнера:
+  > 1. контейнер базы данных **db**
+  > 2. контейнер приложения **backend**
+  > 3. контейнер web-сервера **nginx**
 * Примените миграции:
 ```bash
 docker-compose exec backend python manage.py migrate
@@ -99,7 +99,7 @@ docker-compose exec backend python manage.py createsuperuser
 ```
 * Соберите статику:
 ```bash
-docker-compose exec backend python manage.py collectstatic --no-input
+docker-compose exec backend python manage.py collectstatic --noinput
 ```
 
 ## Сайт
