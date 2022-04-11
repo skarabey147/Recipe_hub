@@ -10,9 +10,6 @@ services:
       - ./.env
 
   backend:
-#    build:
-#      context: ../backend
-#      dockerfile: Dockerfile
     image: skarabey147/foodgram_backend:latest
     expose:
       - 8000
@@ -25,14 +22,6 @@ services:
     env_file:
       - ./.env
 
-  frontend:
-#    build:
-#      context: ../frontend
-#      dockerfile: Dockerfile
-    image: skarabey147/foodgram_frontend:v1
-    volumes:
-      - ../frontend/:/app/result_build/
-
   nginx:
     image: nginx:1.19.3
     ports:
@@ -42,11 +31,15 @@ services:
       - static_value:/app/backend_static/
       - media_value:/app/backend_media/
       - ../frontend/build:/usr/share/nginx/html/
-      - ../docs/:/usr/share/nginx/html/api/docs/
+      - ../docs:/usr/share/nginx/html/api/docs/
     restart: always
     depends_on:
-      - backend
       - frontend
+
+  frontend:
+    image: skarabey147/foodgram_frontend:v1
+    volumes:
+      - ../frontend/:/app/result_build/
 
 volumes:
   postgres_data:
