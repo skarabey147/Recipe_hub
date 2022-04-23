@@ -112,5 +112,5 @@ API документация доступна по ссылке (создана 
 [http://project-foodgram.ddns.net/api/docs/](http://project-foodgram.ddns.net/api/docs/)
 
 ## Авторы
-[Каракозов Е.В.](https://github.com/skarabey147) - Python разработчик. Разработал бэкенд и деплой для сервиса Foodgram.
+[Каракозов Е.В.](https://github.com/skarabey147) - Python разработчик. Разработал бэкенд и деплой для сервиса Foodgram.  
 [Яндекс.Практикум](https://github.com/yandex-praktikum) Фронтенд для сервиса Foodgram.
